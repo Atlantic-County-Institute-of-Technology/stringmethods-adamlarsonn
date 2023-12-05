@@ -2,18 +2,89 @@ import java.util.Scanner;
 public class Main
 {
     public static void main(String[] args)
-    {
+
+    {    //Creates list of integers that are to be translated from ASCII to text
+
         int list[] = {89, 111, 117, 114, 32, 112, 114, 111, 103, 114, 97, 109, 32, 115, 104, 111, 117, 108, 100, 32, 102, 105, 114, 115, 116, 32, 100, 101, 99, 111, 100, 101, 32, 116, 104, 105, 115, 32, 98, 108, 111, 99, 107, 32, 111, 102, 32, 116, 101, 120, 116, 32, 97, 110, 100, 32, 100, 105, 115, 112, 108, 97, 121, 32, 105, 116, 46, 32, 84, 104, 101, 110, 44, 32, 112, 114, 111, 109, 112, 116, 32, 116, 104, 101, 32, 117, 115, 101, 114, 32, 102, 111, 114, 32, 97, 32, 110, 97, 109, 101, 46, 32, 84, 97, 107, 101, 32, 116, 104, 97, 116, 32, 110, 97, 109, 101, 32, 97, 110, 100, 32, 111, 117, 116, 112, 117, 116, 32, 116, 104, 101, 32, 102, 111, 108, 108, 111, 119, 105, 110, 103, 58, 32, 84, 104, 101, 32, 110, 97, 109, 101, 32, 105, 110, 32, 114, 101, 118, 101, 114, 115, 101, 44, 32, 116, 104, 101, 32, 82, 101, 118, 101, 114, 115, 101, 32, 111, 114, 100, 101, 114, 32, 105, 110, 32, 65, 76, 76, 32, 67, 65, 80, 73, 84, 65, 76, 83, 44, 32, 116, 104, 101, 32, 111, 114, 105, 103, 105, 110, 97, 108, 32, 115, 116, 114, 105, 110, 103, 32, 117, 115, 105, 110, 103, 32, 67, 97, 77, 101, 76, 32, 99, 65, 115, 69, 44, 32, 97, 110, 100, 32, 102, 105, 110, 97, 108, 108, 121, 32, 116, 104, 101, 32, 111, 114, 105, 103, 105, 110, 97, 108, 32, 115, 116, 114, 105, 110, 103, 32, 105, 110, 32, 65, 83, 67, 73, 73, 46, 32, 68, 79, 32, 78, 79, 84, 32, 85, 83, 69, 32, 65, 78, 89, 32, 83, 84, 82, 73, 78, 71, 32, 77, 65, 78, 73, 80, 85, 76, 65, 84, 73, 79, 78, 32, 77, 69, 84, 72, 79, 68, 83, 46, 13, 10};
+
+        // Creates an empty string that will be filled with the translated text
+        // Indexes through each integer character in the list and converts it to string printing it when its done
         String instruction;
         for(int i: list)
         {
             instruction = Character.toString((char)i);
             System.out.print(instruction);
         }
+        System.out.println("-------------------");
+
+        // Reverse method
+        // Creates scanner to read input for a name and prints it out backwards by
+        // taking the last letter of the string and adding to the front until the full name is backwards
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter Your Name: ");
+        String name = scan.nextLine();
+        System.out.println(" ");
+        String Reverse = " ";
+        for(int i=name.length();i>0;--i)
+            Reverse+=name.charAt(i-1);
+        {
+            System.out.println("Input in Reverse: ");
+            System.out.println(Reverse);
+        }
+
+        // Reverse Capital method
+        // Creates and empty string to fill with the reverse capital name
+        // For loop is used to index through the length of the perviously used reverse variable
+        // int letter is used in the if statementto check the int value of the character at the index to see if it is a capital letter or not. Casts the integer at the index to a character that can be used in a print statement to show as a letter.
+        String Capital = "";
+        for(int i=0; i < Reverse.length();i++)
+        {
+            int letter = Reverse.charAt(i);
+            if (letter >= 97 && letter < 123)
+            {
+                letter -= 32;
+            }
+            Capital+=(char)letter;
+        }
+        System.out.println(" ");
+        System.out.println("Reverse in all caps: ");
+        System.out.println(Capital);
+
+        // Camel Case Method
+        // Empty string is created and used to add the camel cased name
+        // For loop is created to index through the list to check an if statement to see if the character at the index is in an even index then making it a captial
+        // and Else if statement is used to make the odd indexes lowercase
+        String camel = " ";
+        for(int i = 0; i < name.length(); i++)
+        {
+            int letter = name.charAt(i);
+            if (i % 2 == 0)
+            {
+                if (letter >= 97 && letter < 123)
+                {
+                    letter -=32;
+                }
+            }
+            else if (letter >= 65 && letter < 96)
+            {
+                letter += 32;
+            }
+            camel+=(char)letter;
+        }
+        System.out.println(" ");
+        System.out.println("Input in camel case: ");
+        System.out.println(camel);
+
+        // input to Ascii
+        // For loop is used to index through the given input where it takes each character of the index to be casts as an integer which is then added to the empty string of ascii to be printed.
+        String ascii = "";
+        for(int i = 0; i < name.length(); i++)
+        {
+            int letter = name.charAt(i);
+            ascii+= " " + letter;
+        }
+        System.out.println(" ");
+        System.out.println("Input in Ascii: ");
+        System.out.println(ascii);
     }
 }
-
-
-
